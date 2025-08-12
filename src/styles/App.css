@@ -1,0 +1,367 @@
+* {
+    box-sizing: border-box;
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 100%;
+    max-width: 500px;
+    min-height: 680px;
+    border: 2px solid #bfbfbf;
+    border-radius: 4px;
+    padding: 12px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.game-completed {
+    color: #28a745;
+    font-size: 20px;
+
+}
+
+.game-over {
+    color: #9b5454;
+    font-size: 20px;
+}
+
+.panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.points {
+    width: 80px;
+    padding: 2px 6px;
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    height: 24px;
+    outline: none;
+    background: #fff;
+}
+
+.time {
+    display: inline-block;
+    min-width: 48px;
+    padding: 2px 0;
+}
+
+.btn {
+    width: 110px;
+    min-width: 80px;
+    height: 24px;
+    border: 1px solid #bfbfbf;
+    background: #efefef;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.board {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    min-height: 300px;
+    max-height: 480px;
+    border: 2px solid #000;
+    padding: 8px;
+    overflow: hidden;
+    background: #fff;
+    flex: 1;
+}
+
+.board-container {
+    position: relative;
+    flex: 1;
+}
+
+.bubble {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #9b5454;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 11px;
+    color: #333;
+    background: #fff;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bubble.clicked {
+    background: #ac502b !important;
+    border-color: #ac502b !important;
+    color: #fff !important;
+    animation: simpleFadeOut 3s ease-in-out forwards;
+}
+
+.bubble-number {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    color: #333 !important;
+}
+
+.bubble-countdown {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    margin-top: 2px;
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+@keyframes simpleFadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.next {
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.9);
+    padding-top: 10px;
+
+}
+
+.board.paused *,
+.board.paused {
+    animation-play-state: paused !important;
+}
+
+@media (max-width: 768px) {
+    .wrap {
+        padding: 16px;
+    }
+
+    .card {
+        min-height: 600px;
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 16px;
+        margin: 0 0 8px;
+    }
+
+    .panel {
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+
+    .row {
+        gap: 6px;
+    }
+
+    .points {
+        width: 70px;
+        height: 22px;
+        font-size: 12px;
+    }
+
+    .btn {
+        width: 90px;
+        height: 22px;
+        font-size: 11px;
+    }
+
+    .board {
+        height: 400px;
+        min-height: 250px;
+        max-height: 400px;
+    }
+
+    .bubble {
+        width: 36px;
+        height: 36px;
+        font-size: 10px;
+    }
+
+    .bubble-number {
+        font-size: 12px;
+    }
+
+    .bubble-countdown {
+        font-size: 9px;
+    }
+
+    .next {
+        font-size: 11px;
+        bottom: 6px;
+        left: 6px;
+        right: 6px;
+        padding: 3px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrap {
+        padding: 12px;
+    }
+
+    .card {
+        min-height: 550px;
+        padding: 6px;
+    }
+
+    h2 {
+        font-size: 14px;
+        margin: 0 0 6px;
+    }
+
+    .panel {
+        gap: 4px;
+        margin-bottom: 4px;
+    }
+
+    .row {
+        gap: 4px;
+        font-size: 12px;
+    }
+
+    .points {
+        width: 60px;
+        height: 20px;
+        font-size: 11px;
+    }
+
+    .btn {
+        width: 80px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .board {
+        height: 350px;
+        min-height: 200px;
+        max-height: 350px;
+    }
+
+    .bubble {
+        width: 32px;
+        height: 32px;
+        font-size: 9px;
+    }
+
+    .bubble-number {
+        font-size: 11px;
+    }
+
+    .bubble-countdown {
+        font-size: 8px;
+    }
+
+    .next {
+        font-size: 10px;
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+        padding: 2px 4px;
+    }
+}
+
+@media (max-width: 360px) {
+    .wrap {
+        padding: 8px;
+    }
+
+    .card {
+        min-height: 500px;
+        padding: 4px;
+    }
+
+    h2 {
+        font-size: 13px;
+        margin: 0 0 4px;
+    }
+
+    .panel {
+        gap: 3px;
+        margin-bottom: 3px;
+    }
+
+    .row {
+        gap: 3px;
+        font-size: 11px;
+    }
+
+    .points {
+        width: 50px;
+        height: 18px;
+        font-size: 10px;
+    }
+
+    .btn {
+        width: 70px;
+        height: 18px;
+        font-size: 9px;
+    }
+
+    .board {
+        height: 300px;
+        min-height: 180px;
+        max-height: 300px;
+    }
+
+    .bubble {
+        width: 28px;
+        height: 28px;
+        font-size: 8px;
+    }
+
+    .bubble-number {
+        font-size: 10px;
+    }
+
+    .bubble-countdown {
+        font-size: 7px;
+    }
+
+    .next {
+        font-size: 9px;
+        bottom: 3px;
+        left: 3px;
+        right: 3px;
+        padding: 2px 3px;
+    }
+}
